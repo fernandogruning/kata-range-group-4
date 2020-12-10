@@ -81,11 +81,19 @@ func TestContainsRangeSCE413(t *testing.T) {
 }
 
 func TestContainsRangeSCE414(t *testing.T) {
-
 	rRange := Range{"[3,5]"}
-
 	got := rRange.ContainsRange(Range{"[3,5)"})
 	want := "[3,5] contains [3,5)"
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
+
+func TestEndPointsSCE511(t *testing.T) {
+	rRange := Range{"[2,6)"}
+	got := rRange.EndPoints()
+	want := "{2,5}"
 
 	if got != want {
 		t.Errorf("got %v want %v", got, want)

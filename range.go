@@ -104,6 +104,22 @@ func (r Range) ContainsRange(cr Range) string {
 
 }
 
+func (r Range) EndPoints() string {
+	rr := r.ToRealRange()
+
+	firstEndpoint := rr.Start
+	if !(rr.StartInclusive) {
+		firstEndpoint = rr.Start - 1
+	}
+
+	lastEndpoint := rr.End
+	if !(rr.EndInclusive) {
+		lastEndpoint = rr.End - 1
+	}
+
+	return fmt.Sprintf("{%d,%d}", firstEndpoint, lastEndpoint)
+}
+
 func main() {
 	fmt.Println("Hey")
 }
