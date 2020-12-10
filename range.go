@@ -109,7 +109,7 @@ func (r Range) EndPoints() string {
 
 	firstEndpoint := rr.Start
 	if !(rr.StartInclusive) {
-		firstEndpoint = rr.Start - 1
+		firstEndpoint = rr.Start + 1
 	}
 
 	lastEndpoint := rr.End
