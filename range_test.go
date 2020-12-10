@@ -13,6 +13,17 @@ func TestValidConstructorSCE011(t *testing.T) {
 	}
 }
 
+func TestValidConstructorSCE012(t *testing.T) {
+	rRange := Range{"(3,6]"}
+	r := rRange.ToRealRange()
+	got := r
+	want := RealRange{3, false, 6, true}
+
+	if got != want {
+		t.Errorf("got %v wannt %v", got, want)
+	}
+}
+
 func TestGetAllPointsSCE311(t *testing.T) {
 	rRange := Range{"[2,6)"}
 	r := rRange.GetAllPoints()
