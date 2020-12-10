@@ -199,3 +199,13 @@ func TestEqualsSCE713(t *testing.T) {
 		t.Errorf("got %v want %v", got, want)
 	}
 }
+
+func TestEqualsSCE714(t *testing.T) {
+	rRange := Range{"[3,5)"}
+	got := rRange.Equals(Range{"[2,10)"})
+	want := "[3,5) neq [2,10)"
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
