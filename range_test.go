@@ -149,3 +149,13 @@ func TestOverlapsRangeSCE612(t *testing.T) {
 		t.Errorf("got %v want %v", got, want)
 	}
 }
+
+func TestOverlapsRangeSCE613(t *testing.T) {
+	rRange := Range{"[2,5)"}
+	got := rRange.OverlapsRange(Range{"[3,10)"})
+	want := "[2,5) overlaps with [3,10)"
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
