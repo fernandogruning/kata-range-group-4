@@ -99,3 +99,13 @@ func TestEndPointsSCE511(t *testing.T) {
 		t.Errorf("got %v want %v", got, want)
 	}
 }
+
+func TestEndPointsSCE512(t *testing.T) {
+	rRange := Range{"[2,6]"}
+	got := rRange.EndPoints()
+	want := "{2,6}"
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
