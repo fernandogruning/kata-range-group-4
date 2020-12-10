@@ -42,6 +42,30 @@ func (r Range) ToRealRange() RealRange {
 	return RealRange{start, startInclusive, end, endInclusive}
 }
 
+func (r Range) GetAllPoints() string {
+
+	RealRange := r.ToRealRange()
+	strRange := ""
+
+	start := RealRange.Start
+	if !(RealRange.StartInclusive) {
+		start = RealRange.Start + 1
+	}
+	end := RealRange.End
+	if RealRange.EndInclusive {
+		end = RealRange.End + 1
+	}
+
+	for i := start; i < end; i++ {
+		if !(i+1 == end) {
+			strRange = fmt.Sprintf("%s%d,", strRange, i)
+		} else {
+			strRange = fmt.Sprintf("%s%d", strRange, i)
+		}
+	}
+	return fmt.Sprintf("{%s}", strRange)
+}
+
 func main() {
 	fmt.Println("Hey")
 }
