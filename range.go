@@ -204,7 +204,7 @@ func (r Range) Equals(cr Range) string {
 		return fmt.Sprintf("%v%d,%d%v equals %v%d,%d%v", startBracket, RealRange.Start, RealRange.End, endBracket, compareStartBracket, compareRealRange.Start, compareRealRange.End, compareEndBracket)
 	}
 
-	return fmt.Sprintf("%v%d,%d%v not equals %v%d,%d%v", startBracket, RealRange.Start, RealRange.End, endBracket, compareStartBracket, compareRealRange.Start, compareRealRange.End, compareEndBracket)
+	return fmt.Sprintf("%v%d,%d%v neq %v%d,%d%v", startBracket, RealRange.Start, RealRange.End, endBracket, compareStartBracket, compareRealRange.Start, compareRealRange.End, compareEndBracket)
 }
 
 func main() {

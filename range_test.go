@@ -173,7 +173,7 @@ func TestOverlapsRangeSCE614(t *testing.T) {
 func TestEqualsSCE711(t *testing.T) {
 	rRange := Range{"[2,10)"}
 	got := rRange.Equals(Range{"[3,5)"})
-	want := "[2,10) not equals [3,5)"
+	want := "[2,10) neq [3,5)"
 
 	if got != want {
 		t.Errorf("got %v want %v", got, want)
@@ -184,6 +184,16 @@ func TestEqualsSCE712(t *testing.T) {
 	rRange := Range{"[3,5)"}
 	got := rRange.Equals(Range{"[3,5)"})
 	want := "[3,5) equals [3,5)"
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
+
+func TestEqualsSCE713(t *testing.T) {
+	rRange := Range{"[2,5)"}
+	got := rRange.Equals(Range{"[3,10)"})
+	want := "[2,5) neq [3,10)"
 
 	if got != want {
 		t.Errorf("got %v want %v", got, want)
