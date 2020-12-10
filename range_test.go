@@ -23,3 +23,14 @@ func TestGetAllPointsSCE311(t *testing.T) {
 		t.Errorf("got %v want %v", got, want)
 	}
 }
+
+func TestContainsRangeSCE411(t *testing.T) {
+	rRange := Range{"[2,5)"}
+
+	got := rRange.ContainsRange(Range{"[7,10)"})
+	want := "[2,5) doesn't contain [7,10)"
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}

@@ -66,6 +66,44 @@ func (r Range) GetAllPoints() string {
 	return fmt.Sprintf("{%s}", strRange)
 }
 
+func (r Range) ContainsRange(cr Range) string {
+	RealRange := r.ToRealRange()
+	compareRealRange := cr.ToRealRange()
+
+	startBracket := "["
+	start := RealRange.Start
+	if !(RealRange.StartInclusive) {
+		startBracket = "("
+		start = RealRange.Start + 1
+	}
+
+	endBracket := ")"
+	end := RealRange.End
+	if RealRange.EndInclusive {
+		endBracket = "]"
+		end = RealRange.End + 1
+	}
+	compareStartBracket := "["
+	compareStart := compareRealRange.Start
+	if !(compareRealRange.StartInclusive) {
+		compareStartBracket = "("
+		compareStart = compareRealRange.Start + 1
+	}
+
+	compareEndBracket := ")"
+	compareEnd := compareRealRange.End
+	if compareRealRange.EndInclusive {
+		compareEndBracket = "]"
+		compareEnd = compareRealRange.End + 1
+	}
+
+	if compareStart < start || compareEnd > end {
+		return fmt.Sprintf("%v%d,%d%v doesn't contain %v%d,%d%v", startBracket, RealRange.Start, RealRange.End, endBracket, compareStartBracket, compareRealRange.Start, compareRealRange.End, compareEndBracket)
+	}
+	return fmt.Sprintf("%v%d,%d%v contains %v%d,%d%v", startBracket, RealRange.Start, RealRange.End, endBracket, compareStartBracket, compareRealRange.Start, compareRealRange.End, compareEndBracket)
+
+}
+
 func main() {
 	fmt.Println("Hey")
 }
