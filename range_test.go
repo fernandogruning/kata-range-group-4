@@ -35,6 +35,17 @@ func TestGetAllPointsSCE311(t *testing.T) {
 	}
 }
 
+func TestGetAllPointsSCE312(t *testing.T) {
+	rRange := Range{"[1,10)"}
+	r := rRange.GetAllPoints()
+	got := r
+	want := "{1,2,3,4,5,6,7,8,9}"
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
+
 func TestContainsRangeSCE411(t *testing.T) {
 	rRange := Range{"[2,5)"}
 
