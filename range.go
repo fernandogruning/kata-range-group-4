@@ -169,6 +169,44 @@ func (r Range) OverlapsRange(cr Range) string {
 
 }
 
+func (r Range) Equals(cr Range) string {
+	RealRange := r.ToRealRange()
+	compareRealRange := cr.ToRealRange()
+
+	startBracket := "["
+	start := RealRange.Start
+	if !(RealRange.StartInclusive) {
+		startBracket = "("
+		start = RealRange.Start + 1
+	}
+
+	endBracket := ")"
+	end := RealRange.End
+	if RealRange.EndInclusive {
+		endBracket = "]"
+		end = RealRange.End + 1
+	}
+	compareStartBracket := "["
+	compareStart := compareRealRange.Start
+	if !(compareRealRange.StartInclusive) {
+		compareStartBracket = "("
+		compareStart = compareRealRange.Start + 1
+	}
+
+	compareEndBracket := ")"
+	compareEnd := compareRealRange.End
+	if compareRealRange.EndInclusive {
+		compareEndBracket = "]"
+		compareEnd = compareRealRange.End + 1
+	}
+
+	if compareStart == start && compareEnd == end {
+		return fmt.Sprintf("%v%d,%d%v equals %v%d,%d%v", startBracket, RealRange.Start, RealRange.End, endBracket, compareStartBracket, compareRealRange.Start, compareRealRange.End, compareEndBracket)
+	}
+
+	return fmt.Sprintf("%v%d,%d%v not equals %v%d,%d%v", startBracket, RealRange.Start, RealRange.End, endBracket, compareStartBracket, compareRealRange.Start, compareRealRange.End, compareEndBracket)
+}
+
 func main() {
 	fmt.Println("Hey")
 }
