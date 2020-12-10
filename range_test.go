@@ -67,3 +67,15 @@ func TestContainsRangeSCE412(t *testing.T) {
 		t.Errorf("got %v want %v", got, want)
 	}
 }
+
+func TestContainsRangeSCE413(t *testing.T) {
+
+	rRange := Range{"[2,5)"}
+
+	got := rRange.ContainsRange(Range{"[3,5)"})
+	want := "[2,5) contains [3,5)"
+
+	if got != want {
+		t.Errorf("got %v want %v", got, want)
+	}
+}
